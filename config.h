@@ -33,12 +33,12 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = { TERMINAL, "-n", "spterm", "-g", "120x34", NULL };
+const char *spcmd1[] = { TERMINAL, "-n", "spterm", "-g", "120x34", "-e", "tmux", NULL };
 const char *spcmd2[] = { TERMINAL, "-n", "spcalc", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL };
 const char *spcmd3[] = { TERMINAL, "-n", "spteams", "-g", "180x54", "-e", "teams-for-linux", NULL };
 const char *spcmd4[] = { TERMINAL, "-n", "spoutlook", "-g", "180x54", "-e", "outlook-for-linux", NULL };
 const char *spcmd5[] = { TERMINAL, "-n", "spfigma", "-g", "180x54", "-e", "figma-linux", NULL };
-const char *spcmd6[] = { TERMINAL, "-n", "spnotes", "-g", "120x40", "-e", "sh", "-c", "cd ~/Notes && nvim", NULL };
+const char *spcmd6[] = { TERMINAL, "-n", "spnotes", "-g", "120x40", "-e", "sh", "-c", "cd ~/Notes && neovide", NULL };
 const char *spcmd7[] = { TERMINAL, "-n", "sptelegram", "-g", "50x34", "-e", "telegram-desktop", NULL };
 const char *spcmd8[] = { TERMINAL, "-n", "spdiscord", "-g", "180x54", "-e", "discord", NULL };
 
@@ -209,8 +209,8 @@ static const Key keys[] = {
 
 	{ MODKEY,			XK_a,          togglegaps,             {0} },
 	{ MODKEY|ShiftMask,		XK_a,          defaultgaps,            {0} },
-	{ MODKEY,			XK_s,          togglesticky,           {0} },
-	/* { MODKEY|ShiftMask,		XK_s,          spawn,                  SHCMD("") }, */
+	{ MODKEY,		XK_s,          spawn,                  SHCMD(TERMINAL) },
+	{ MODKEY|ShiftMask,			XK_s,          togglesticky,           {0} },
 	{ MODKEY,			XK_d,          spawn,                  {.v = (const char*[]){ "dmenu_run", NULL } } },
 	{ MODKEY|ShiftMask,		XK_d,          spawn,                  {.v = (const char*[]){ "passmenu", NULL } } },
 	{ MODKEY,			XK_f,          togglefullscr,          {0} },
